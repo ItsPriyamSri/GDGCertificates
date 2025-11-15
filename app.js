@@ -33,10 +33,11 @@ cors_proxy
 			xfwd: false,
 		},
 	})
-	.listen(3000, () => {
-		console.log('Running CORS Anywhere on 3000');
-	});
+	.listen(process.env.PORT || 3000, () => {
+  console.log(`Running CORS Anywhere on ${process.env.PORT || 3000}`);
+});
 
 // app.listen(3000, () => {
 // 	console.log('Server is running on port 3000');
 // });
+
