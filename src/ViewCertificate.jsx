@@ -181,7 +181,7 @@ function ViewCertificate() {
           </div>
           <div className="signatures">
             <div id="sign-gdg">
-              <img src="/gdg-org.png" />
+              <img src="/priyam-removebg-preview.png" />
               GDG on Campus Organiser
             </div>
 
@@ -246,7 +246,7 @@ function PrintCertificate({ data }) {
 
         <div className="signatures">
           <div id="sign-gdg">
-            <img src="/gdg-org.png" alt="" />
+            <img src="/priyam-removebg-preview.png" alt="" />
             GDG on Campus Organiser
           </div>
 
