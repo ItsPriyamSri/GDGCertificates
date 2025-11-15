@@ -27,7 +27,7 @@ function Certificate() {
     console.log("fetching data started");
 
     try {
-      const response = await fetch("https://gdgcertificates-production.up.railway.app/" + url, {
+      const response = await fetch("https://gdg-certificates-proxy.onrender.com" + url, {
         method: "GET",
       });
       if (!response.ok) {
