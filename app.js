@@ -15,6 +15,8 @@ const HOST = '0.0.0.0';
 cors_proxy
 	.createServer({
 		//  requireHeader: ['origin', 'x-requested-with'],
+		originWhitelist: [], // Allow all origins
+        requireHeader: [],
 		removeHeaders: [
 			'cookie',
 			'cookie2',
@@ -42,6 +44,7 @@ cors_proxy
 // app.listen(3000, () => {
 // 	console.log('Server is running on port 3000');
 // });
+
 
 
 
