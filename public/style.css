@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+@media print {
+	body {
+		margin: 0%;
+		background: unset;
+	}
+}
+
+@font-face {
+	font-family: 'Google Sans Reg';
+	src: url('/GoogleSansDisplay-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Google Sans Bold';
+	src: url('/GoogleSansDisplay-Bold.ttf');
+}
+
+body {
+	background: url('/bg.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 11.7in;
+	width: 8.3in;
+	padding: 25px;
+}
+
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact !important;
+	color-adjust: exact !important;
+	print-color-adjust: exact !important;
+}
+
+.container {
+	background-color: aliceblue;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.logo {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 10px 0px 10px;
+}
+
+.logo-gdg {
+	height: 30px;
+}
+
+.logo-srmcem {
+	height: 50px;
+}
+
+.certificate {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Google Sans Bold';
+	padding: 0px 20px;
+}
+
+.certificate > h1 {
+	font-size: 40px;
+	color: #ea4335;
+	text-decoration-line: underline;
+	text-decoration-color: #f5bf4a;
+	margin: 0;
+}
+
+#sp1 {
+	color: #34a853;
+}
+
+#sp2 {
+	color: #4285f4;
+}
+
+.certificate > h2 {
+	font-size: 30px;
+	font-weight: 400;
+	font-style: normal;
+	margin-bottom: 10px;
+}
+
+.certificate > p {
+	font-size: 18px;
+	font-family: 'Open Sans', cursive;
+}
+.signatures {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	text-align: center;
+	font-family: 'Google Sans Reg';
+	font-size: 15px;
+}
+
+.signatures > * {
+	height: 40px;
+	margin: 0 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.signatures > * > img {
+	height: inherit;
+}
+
+#sign-hod::after {
+	content: '';
+	width: 100%;
+	height: 2px;
+}
+
+#sign-gdg::after {
+	content: '';
+	width: 100%;
+	height: 2px;
+}
+
+.badges {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	justify-content: unset;
+	place-items: center;
+	padding: 30px;
+	width: 100%;
+}
+
+.badge {
+	height: 85%;
+	padding: 10px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	position: relative;
+	overflow: hidden;
+	background: white;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.262);
+}
+
+.badge > .badge-bg {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+}
+
+.badge > .badge-img {
+	width: 90%;
+	position: relative;
+	top: 52%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
