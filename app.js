@@ -10,6 +10,8 @@
 // });
 
 import cors_proxy from './cors-anywhere.cjs';
+const PORT = process.env.PORT || 3000;
+const HOST = '0.0.0.0';
 cors_proxy
 	.createServer({
 		//  requireHeader: ['origin', 'x-requested-with'],
@@ -33,12 +35,13 @@ cors_proxy
 			xfwd: false,
 		},
 	})
-	.listen(PORT, '0.0.0.0', () => {
-    console.log(`Running CORS Anywhere on ${PORT}`);
+	 .listen(PORT, HOST, () => {
+    console.log(`Running CORS Anywhere on ${HOST}:${PORT}`);
   });
 
 // app.listen(3000, () => {
 // 	console.log('Server is running on port 3000');
 // });
+
 
 
