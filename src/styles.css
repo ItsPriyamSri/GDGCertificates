@@ -32,14 +32,17 @@ body {
 .printbar h1 {
 	margin: 0;
 }
+
 .printbar p {
 	margin-bottom: 0;
 	margin-left: 10px;
 	font-weight: 300;
 }
+
 .printbar b {
 	margin-right: 10px;
 }
+
 .printbar button {
 	padding: 20px 40px;
 	height: 100%;
@@ -105,7 +108,7 @@ body {
 	align-items: center;
 }
 
-.certificate form > * {
+.certificate form>* {
 	margin: 10px;
 }
 
@@ -172,7 +175,7 @@ main {
 	flex-direction: column;
 	justify-content: space-between;
 	min-height: 100vh;
-    height: auto;
+	height: auto;
 	width: 100%;
 	overflow: hidden;
 }
@@ -206,7 +209,7 @@ main {
 	padding: 0px 20px;
 }
 
-.certificate > h1 {
+.certificate>h1 {
 	font-size: 40px;
 	color: #ea4335;
 	text-decoration-line: underline;
@@ -222,14 +225,14 @@ main {
 	color: #4285f4;
 }
 
-.certificate > h2 {
+.certificate>h2 {
 	font-size: 30px;
 	font-weight: 400;
 	font-style: normal;
 	margin-bottom: 10px;
 }
 
-.certificate > p {
+.certificate>p {
 	font-size: 18px;
 	font-family: 'Open Sans', cursive;
 }
@@ -245,7 +248,7 @@ main {
 	font-size: 15px;
 }
 
-.signatures > * {
+.signatures>* {
 	height: 40px;
 	margin: 0 20px;
 	display: flex;
@@ -253,7 +256,7 @@ main {
 	align-items: center;
 }
 
-.signatures > * > img {
+.signatures>*>img {
 	height: inherit;
 }
 
@@ -292,7 +295,7 @@ main {
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.262);
 }
 
-.badge > .badge-bg {
+.badge>.badge-bg {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
@@ -302,91 +305,98 @@ main {
 	position: absolute;
 }
 
-.badge > .badge-img {
+.badge>.badge-img {
 	width: 90%;
 	position: relative;
 	top: 52%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
 @media print {
-   body {
-    margin: 0;
-    padding: 0;
-    background: url('/bg.png') !important; /* ⭐ Background add kiya */
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
+	body {
+		margin: 0;
+		padding: 0;
+		background: url('/bg.png') !important;
+		/* ⭐ Background add kiya */
+		background-size: cover !important;
+		background-repeat: no-repeat !important;
+		background-position: center !important;
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+	}
 
-  .printbar {
-    display: none !important;
-  }
+	.printbar {
+		display: none !important;
+	}
 
-  main {
-    display: none !important;
-  }
+	main {
+		display: none !important;
+	}
 
-  .pbody {
-    display: block !important;
-  }
+	.pbody {
+		display: block !important;
+	}
 
-  .print-page {
-    page-break-after: avoid !important; /* ⭐ Changed to avoid */
-    page-break-inside: avoid;
-    min-height: 100vh;
-    height: auto;
-    padding: 20px !important; /* ⭐ Reduced padding */
-  }
+	.print-page {
+		page-break-after: avoid !important;
+		/* ⭐ Changed to avoid */
+		page-break-inside: avoid;
+		min-height: 100vh;
+		height: auto;
+		padding: 20px !important;
+		/* ⭐ Reduced padding */
+	}
 
-  .page-2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+	.page-2 {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
-  .badges {
-    page-break-inside: avoid;
-    gap: 12px;
-    padding: 20px;
-  }
+	.badges {
+		page-break-inside: avoid;
+		gap: 12px;
+		padding: 20px;
+	}
 
-  .badges-page-2 {
-    padding: 40px;
-    gap: 15px;
-  }
+	.badges-page-2 {
+		padding: 40px;
+		gap: 15px;
+	}
 
-  .badge {
-    width: 140px !important;
-    height: 140px !important;
-    flex-shrink: 0;
-    page-break-inside: avoid;
-  }
+	.badge {
+		width: 140px !important;
+		height: 140px !important;
+		flex-shrink: 0;
+		page-break-inside: avoid;
+	}
 
-  .certificate > h1 {
-    font-size: 34px;
-    margin: 5px 0;
-  }
+	.certificate>h1 {
+		font-size: 34px;
+		margin: 5px 0;
+	}
 
-  .certificate > h2 {
-    font-size: 24px;
-    margin: 5px 0;
-  }
+	.certificate>h2 {
+		font-size: 24px;
+		margin: 5px 0;
+	}
 
-  .certificate > p {
-    font-size: 15px;
-    margin: 10px 0;
-  }
+	.certificate>p {
+		font-size: 15px;
+		margin: 10px 0;
+	}
 
-  .signatures {
-    margin: 15px 0;
-  }
-    .container {
-     border: 25px solid #f5bf4a !important;  /* ⭐ Charon taraf border */
-    padding: 15px !important;  /* ⭐ Thoda kam padding */
-    min-height: 100vh !important;
-  }
+	.signatures {
+		margin: 15px 0;
+	}
+
+	.container {
+		border: 25px solid #f5bf4a !important;
+		/* ⭐ Charon taraf border */
+		padding: 15px !important;
+		/* ⭐ Thoda kam padding */
+		min-height: 100vh !important;
+	}
 
 }
