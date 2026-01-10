@@ -178,9 +178,18 @@ function ViewCertificate() {
           print-color-adjust: exact !important;
         }
         
+        html {
+          height: 100% !important;
+          max-height: 100vh !important;
+          overflow: hidden !important;
+        }
+        
         body {
           margin: 0 !important;
           padding: 0 !important;
+          height: 100% !important;
+          max-height: 100vh !important;
+          overflow: hidden !important;
           background: url('/bg.png') !important;
           background-size: cover !important;
         }
