@@ -31,7 +31,7 @@ function CertificateDetails({ setProfileURL, isLoading }) {
 					type='text'
 					id='ProfileURL'
 					name='ProfileURL'
-					placeholder='https://www.cloudskillsboost.google/public_profiles/...'
+					placeholder='https://www.skills.google/public_profiles/...'
 					required
 					disabled={isLoading}
 				/>
