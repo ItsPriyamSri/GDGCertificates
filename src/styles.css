@@ -292,6 +292,11 @@ body {
 		padding: 14px 24px;
 	}
 
+	.home-logo {
+		height: clamp(30px, 10vw, 60px) !important;
+		margin-bottom: 15px;
+	}
+
 	.certificate-form form input {
 		width: 90%;
 		max-width: none;
