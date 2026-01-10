@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 
 function Certificate() {
   const [ProfileURL, setProfileURL] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   // https://www.cloudskillsboost.google/public_profiles/b3487dc3-9b6f-4b3a-90bc-8bd65c3a8aea
 
   const server = window.location.href
@@ -13,14 +14,20 @@ function Certificate() {
     .replace("3000", "8080");
 
   useEffect(() => {
-    ProfileURL
-      ? fetchData(ProfileURL).then((data) => {
-          console.log(data);
+    if (ProfileURL) {
+      setIsLoading(true);
+      fetchData(ProfileURL).then((data) => {
+        console.log(data);
+        if (data) {
           handleDataFetch(data);
-          // data ? handleDataFetch(data) : (window.location.href = "/error");
-          // window.location.href = "/error";
-        })
-      : console.log("waiting for user input");
+        } else {
+          setIsLoading(false);
+          alert("Failed to fetch data. Please check the URL and try again.");
+        }
+      });
+    } else {
+      console.log("waiting for user input");
+    }
   }, [ProfileURL]);
 
   const fetchData = async (url) => {
@@ -39,12 +46,12 @@ function Certificate() {
       const badges = page.querySelectorAll(".profile-badge");
       const finalBadges = [];
       badges.forEach((badge) => {
-          const b = {
-             link: badge.children[0].href,
-             img_url: badge.children[0].children[0].src,
-              b_name: badge.children[1].innerText,
-          };
-  
+        const b = {
+          link: badge.children[0].href,
+          img_url: badge.children[0].children[0].src,
+          b_name: badge.children[1].innerText,
+        };
+
         finalBadges.push(b);
         console.log(b);
       });
@@ -75,7 +82,7 @@ function Certificate() {
       <Routes>
         <Route
           path="/"
-          element={<CertificateDetails setProfileURL={setProfileURL} />}
+          element={<CertificateDetails setProfileURL={setProfileURL} isLoading={isLoading} />}
         />
         <Route path="/view" element={<ViewCertificate />} />
       </Routes>

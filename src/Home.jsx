@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 function Home() {
 	return (
@@ -13,28 +13,31 @@ function Home() {
 			<motion.img
 				initial={{ y: '-100px' }}
 				src='/logo-gdg.svg'
-				alt=''
+				alt='GDG Logo'
+				className='home-logo'
 			/>
-			<h1>Congratulations</h1>
+			<h1 className='gradient-text'>Congratulations!</h1>
 			<motion.p
 				initial={{ y: '100px', opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				exit={{ y: '100px', opacity: 0 }}
 				transition={{ type: 'spring', stiffness: 180 }}
+				className='home-description'
 			>
-				A huge round of applause for your achievements. You have successfully
-				completed the challenges and earned the badges. Keep up the good work.
+				Your dedication to mastering Google Cloud technologies has paid off.<br />
+				Celebrate your achievement with an official certificate recognizing your expertise.
 			</motion.p>
 			<motion.a
 				href='/certificate'
-				// /certificate
+				className='cta-button'
 				initial={{ y: '100px', opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				exit={{ y: '100px', opacity: 0 }}
-				whileHover={{ x: '20px' }}
+				whileHover={{ scale: 1.05 }}
+				whileTap={{ scale: 0.95 }}
 				transition={{ type: 'spring', stiffness: 180 }}
 			>
-				Follow This Link to enter your Google Cloud's Skillboost id
+				🎓 Generate Your Certificate
 			</motion.a>
 		</motion.div>
 	);
