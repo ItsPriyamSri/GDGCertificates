@@ -55,11 +55,20 @@ function Certificate() {
         finalBadges.push(b);
         console.log(b);
       });
-      console.log(finalBadges);
+
+      // Sort badges to put Arcade badge first (it displays without frame)
+      const arcadeBadge = finalBadges.find(b =>
+        b.b_name.toLowerCase().includes('arcade') ||
+        b.img_url.toLowerCase().includes('arcade')
+      );
+      const otherBadges = finalBadges.filter(b => b !== arcadeBadge);
+      const sortedBadges = arcadeBadge ? [arcadeBadge, ...otherBadges] : finalBadges;
+
+      console.log("Sorted badges (arcade first):", sortedBadges);
       const name = data.split("<title>")[1].split("|")[0];
       const obj = {
         name: name,
-        badges: finalBadges,
+        badges: sortedBadges,
       };
       // console.log(obj);
 

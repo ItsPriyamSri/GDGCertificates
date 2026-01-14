@@ -1,6 +1,18 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 function ViewCertificate() {
+  // Print readiness state - prevents clicking before CSS loads
+  const [isPrintReady, setIsPrintReady] = useState(false);
+
+  // Delay print button activation to ensure CSS is fully loaded
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPrintReady(true);
+    }, 2500); // 2.5 second delay
+    return () => clearTimeout(timer);
+  }, []);
+
   let data = null;
   try {
     data = JSON.parse(localStorage.getItem("data"));
@@ -63,7 +75,9 @@ function ViewCertificate() {
             height: auto !important;
             padding: 15px !important;
             page-break-inside: avoid !important;
-            border: 25px solid #ffbd23ff !important; 
+            border: 25px solid #ffbd23ff !important;
+            display: flex !important;
+            flex-direction: column !important;
           }
 
           .logo {
@@ -75,7 +89,7 @@ function ViewCertificate() {
 
           .certificate {
             padding: 5px 20px !important;
-            margin-bottom: 5px !important;
+            margin-bottom: 0px !important;
           }
 
           .certificate > h1 {
@@ -90,12 +104,12 @@ function ViewCertificate() {
 
           .certificate > p {
             font-size: 13px !important;
-            margin: 5px 0 !important; 
+            margin: 3px 0 !important; 
             line-height: 1.3 !important;
           }
 
           .signatures {
-            margin: 5px 0 !important;
+            margin: 0 !important;
             padding: 0 20px !important;
           }
 
@@ -108,18 +122,22 @@ function ViewCertificate() {
           }
 
           .badges {
-            gap: 12px !important;
-            padding: 0px 15px !important;
+            row-gap: 18px !important;
+            column-gap: 12px !important;
+            padding: 10px 15px !important;
             justify-content: center !important;
             flex-wrap: wrap !important;
-            margin-top: -15px !important;
+            margin-top: 0px !important;
+            flex-grow: 1 !important;
+            align-content: space-evenly !important;
           }
 
           .badge {
-            width: 130px !important;
+            width: 110px !important;
             height: 110px !important;
             flex-shrink: 0 !important;
             page-break-inside: avoid !important;
+            border-radius: 50% !important;
           }
 
           .print-page {
@@ -269,12 +287,15 @@ function ViewCertificate() {
         }
 
         .badge {
-          /* 4 badges per row: calc(25% - gap adjustment) */
+          /* 4 badges per row with equal width/height for circular shape */
           width: calc(25% - 8px) !important;
-          aspect-ratio: 1 !important;
+          height: 0 !important;
+          padding-bottom: calc(25% - 8px) !important; /* Square using padding trick */
           flex-shrink: 0 !important;
           page-break-inside: avoid !important;
           break-inside: avoid !important;
+          border-radius: 50% !important;
+          position: relative !important;
         }
 
         .print-page {
@@ -327,8 +348,10 @@ function ViewCertificate() {
           onClick={() => {
             printCertificate();
           }}
+          disabled={!isPrintReady}
+          style={{ opacity: isPrintReady ? 1 : 0.5, cursor: isPrintReady ? 'pointer' : 'not-allowed' }}
         >
-          Print
+          {isPrintReady ? 'Print' : 'Preparing...'}
         </button>
       </div>
       <motion.main

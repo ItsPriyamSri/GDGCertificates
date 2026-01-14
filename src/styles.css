@@ -527,10 +527,11 @@ main {
 	}
 
 	.badge {
-		width: 140px !important;
-		height: 140px !important;
+		width: 110px !important;
+		height: 110px !important;
 		flex-shrink: 0;
 		page-break-inside: avoid;
+		border-radius: 50% !important;
 	}
 
 	.certificate>h1 {
