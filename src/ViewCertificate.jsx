@@ -279,8 +279,6 @@ function ViewCertificate() {
           width: 100% !important;
           height: 100% !important;
           aspect-ratio: 1 !important;
-          flex-grow: 1 !important;
-          align-content: center !important;
           page-break-inside: avoid !important;
           break-inside: avoid !important;
         }
