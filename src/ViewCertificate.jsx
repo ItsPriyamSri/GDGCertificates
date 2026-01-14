@@ -267,14 +267,12 @@ function ViewCertificate() {
         }
 
         .badges {
-          row-gap: 18px !important;
+          row-gap: 10px !important;
           column-gap: 12px !important;
           padding: 10px 15px !important;
           justify-content: center !important;
           flex-wrap: wrap !important;
           margin-top: 0px !important;
-          flex-grow: 1 !important;
-          align-content: space-evenly !important;
           display: flex !important;
         }
 
