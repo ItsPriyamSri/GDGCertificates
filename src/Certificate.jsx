@@ -56,7 +56,7 @@ function Certificate() {
         console.log(b);
       });
 
-      // Sort badges to put Arcade badge first (it displays without frame)
+      // Sort badges to put arcade badge first (it displays without frame)
       const arcadeBadge = finalBadges.find(b =>
         b.b_name.toLowerCase().includes('arcade') ||
         b.img_url.toLowerCase().includes('arcade')
@@ -64,7 +64,9 @@ function Certificate() {
       const otherBadges = finalBadges.filter(b => b !== arcadeBadge);
       const sortedBadges = arcadeBadge ? [arcadeBadge, ...otherBadges] : finalBadges;
 
-      console.log("Sorted badges (arcade first):", sortedBadges);
+      console.log('Arcade badge found:', arcadeBadge);
+      console.log('Sorted badges:', sortedBadges);
+
       const name = data.split("<title>")[1].split("|")[0];
       const obj = {
         name: name,

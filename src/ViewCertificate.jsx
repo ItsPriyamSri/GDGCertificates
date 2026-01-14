@@ -1,18 +1,7 @@
-import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 function ViewCertificate() {
-  // Print readiness state - prevents clicking before CSS loads
-  const [isPrintReady, setIsPrintReady] = useState(false);
-
-  // Delay print button activation to ensure CSS is fully loaded
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsPrintReady(true);
-    }, 2500); // 2.5 second delay
-    return () => clearTimeout(timer);
-  }, []);
-
   let data = null;
   try {
     data = JSON.parse(localStorage.getItem("data"));
@@ -26,6 +15,18 @@ function ViewCertificate() {
     return null;
   }
   console.log(data);
+
+  // Print button delay state - wait for CSS to fully load
+  const [isPrintReady, setIsPrintReady] = useState(false);
+
+  useEffect(() => {
+    // Wait 2.5 seconds for CSS and images to load before enabling print
+    const timer = setTimeout(() => {
+      setIsPrintReady(true);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const url = window.location.href.split("/")[2];
 
@@ -86,28 +87,28 @@ function ViewCertificate() {
           .logo-srmcem { height: 40px !important; }
 
           .certificate {
-            padding: 10px 20px !important;
-            margin-bottom: 0 !important;
+            padding: 5px 20px !important;
+            margin-bottom: 5px !important;
           }
 
           .certificate > h1 {
             font-size: 28px !important;
-            margin: 8px 0 !important;
+            margin: 3px 0 !important;
           }
 
           .certificate > h2 {
             font-size: 20px !important;
-            margin: 5px 0 !important;
+            margin: 3px 0 !important;
           }
 
           .certificate > p {
             font-size: 13px !important;
-            margin: 8px 0 3px 0 !important; 
+            margin: 5px 0 !important; 
             line-height: 1.3 !important;
           }
 
           .signatures {
-            margin: 0 !important;
+            margin: 5px 0 !important;
             padding: 0 20px !important;
           }
 
@@ -128,11 +129,10 @@ function ViewCertificate() {
           }
 
           .badge {
-            width: 110px !important;
+            width: 130px !important;
             height: 110px !important;
             flex-shrink: 0 !important;
             page-break-inside: avoid !important;
-            border-radius: 50% !important;
           }
 
           .print-page {
@@ -282,13 +282,12 @@ function ViewCertificate() {
         }
 
         .badge {
-          /* Fixed 55px circular badges - 4 per row */
-          width: 55px !important;
-          height: 55px !important;
+          /* 4 badges per row: calc(25% - gap adjustment) */
+          width: calc(25% - 8px) !important;
+          aspect-ratio: 1 !important;
           flex-shrink: 0 !important;
           page-break-inside: avoid !important;
           break-inside: avoid !important;
-          border-radius: 50% !important;
         }
 
         .print-page {
@@ -342,7 +341,10 @@ function ViewCertificate() {
             printCertificate();
           }}
           disabled={!isPrintReady}
-          style={{ opacity: isPrintReady ? 1 : 0.5, cursor: isPrintReady ? 'pointer' : 'not-allowed' }}
+          style={{
+            opacity: isPrintReady ? 1 : 0.6,
+            cursor: isPrintReady ? 'pointer' : 'not-allowed'
+          }}
         >
           {isPrintReady ? 'Print' : 'Preparing...'}
         </button>
