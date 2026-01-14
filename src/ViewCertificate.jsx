@@ -393,9 +393,9 @@ function ViewCertificate() {
             {data.badges.map((badge, index) => {
               if (index === 0) {
                 return (
-                  <a key={index} className="badge arcade-badge" href={badge.link}>
+                  <a key={index} className="badge" href={badge.link}>
                     <img
-                      className="badge-img arcade-img"
+                      className="badge-img"
                       src={badge.img_url}
                       alt="badge"
                     />
@@ -457,8 +457,8 @@ function PrintCertificate({ data }) {
           {data.badges.map((badge, index) => {
             if (index === 0) {
               return (
-                <a key={index} className="badge arcade-badge" href={badge.link}>
-                  <img className="badge-img arcade-img" src={badge.img_url} alt="badge" />
+                <a key={index} className="badge" href={badge.link}>
+                  <img className="badge-img" src={badge.img_url} alt="badge" />
                 </a>
               );
             }
