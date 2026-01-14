@@ -20,10 +20,25 @@ function ViewCertificate() {
   const [isPrintReady, setIsPrintReady] = useState(false);
 
   useEffect(() => {
-    // Wait 2.5 seconds for CSS and images to load before enabling print
+    // Preload images to speed up first render
+    const imagesToPreload = [
+      '/bg.png',
+      '/logo-gdg.png',
+      '/logo-srmcem.png',
+      '/badge-bg.png',
+      '/organizer-sign.png',
+      '/gdg-hod.png'
+    ];
+
+    imagesToPreload.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+
+    // Wait 4 seconds for CSS and images to load before enabling print
     const timer = setTimeout(() => {
       setIsPrintReady(true);
-    }, 2500);
+    }, 4000);
 
     return () => clearTimeout(timer);
   }, []);
