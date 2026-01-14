@@ -288,17 +288,17 @@ function ViewCertificate() {
         .badges {
           display: flex !important;
           flex-wrap: wrap !important;
-          justify-content: center !important;
-          gap: 6px !important;
-          padding: 5px 10px !important;
+          justify-content: space-evenly !important;
+          gap: 12px !important;
+          padding: 5px 8px !important;
           width: 100% !important;
           page-break-inside: avoid !important;
           break-inside: avoid !important;
         }
 
         .badge {
-          /* 4 badges per row: calc(25% - gap adjustment) */
-          width: calc(25% - 8px) !important;
+          /* Smaller width + bigger gap = more square badges */
+          width: calc(20% - 10px) !important;
           aspect-ratio: 1 !important;
           flex-shrink: 0 !important;
           page-break-inside: avoid !important;
