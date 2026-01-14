@@ -348,7 +348,7 @@ function ViewCertificate() {
           <h1>Click this button to print your certificate</h1>
           <p>
             <b>NOTE:</b>
-            set the page size as A4, and margin as none if it isn't in 1 page
+            Set the page size as A4, and margin as none if it isn't in 1 page
           </p>
         </div>
         <button
