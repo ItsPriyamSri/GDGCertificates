@@ -474,6 +474,13 @@ main {
 	transform: translate(-50%, -50%);
 }
 
+/* Arcade badge (first badge) displays larger since it has no frame */
+.arcade-img {
+	width: 95% !important;
+	height: 95% !important;
+	object-fit: contain !important;
+}
+
 @media print {
 	body {
 		margin: 0;
