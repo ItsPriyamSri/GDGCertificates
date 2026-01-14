@@ -297,8 +297,8 @@ function ViewCertificate() {
         }
 
         .badge {
-          /* Smaller width + bigger gap = more square badges */
-          width: calc(20% - 10px) !important;
+          /* 4 badges per row: slightly smaller width + bigger gaps = square badges */
+          width: calc(22% - 8px) !important;
           aspect-ratio: 1 !important;
           flex-shrink: 0 !important;
           page-break-inside: avoid !important;
