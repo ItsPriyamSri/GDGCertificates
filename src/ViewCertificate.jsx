@@ -210,8 +210,8 @@ function ViewCertificate() {
         .container {
           width: 100% !important;
           height: auto !important;
-          min-height: 100vh !important;
           max-height: 100vh !important;
+          min-height: 0 !important;
           padding: 10px !important;
           border: 20px solid #ffbd23ff !important;
           
@@ -223,6 +223,7 @@ function ViewCertificate() {
           
           display: flex !important;
           flex-direction: column !important;
+          /* Changed from space-between to prevent huge gaps */
           justify-content: flex-start !important;
           gap: 8px !important;
           overflow: hidden !important;
@@ -273,19 +274,17 @@ function ViewCertificate() {
           display: flex !important;
           flex-wrap: wrap !important;
           justify-content: center !important;
-          align-content: center !important;
           gap: 6px !important;
           padding: 5px 10px !important;
           width: 100% !important;
-          flex-grow: 1 !important;
           page-break-inside: avoid !important;
           break-inside: avoid !important;
         }
 
         .badge {
-          /* Circular badges with fixed dimensions */
-          width: 70px !important;
-          height: 70px !important;
+          /* 4 badges per row: calc(25% - gap adjustment) */
+          width: calc(25% - 8px) !important;
+          aspect-ratio: 1 !important;
           flex-shrink: 0 !important;
           page-break-inside: avoid !important;
           break-inside: avoid !important;
