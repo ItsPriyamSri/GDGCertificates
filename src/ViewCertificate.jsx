@@ -103,7 +103,7 @@ function ViewCertificate() {
 
           .certificate > p {
             font-size: 13px !important;
-            margin: 5px 0 !important; 
+            margin: 4px 0 !important; 
             line-height: 1.3 !important;
           }
 
@@ -130,7 +130,7 @@ function ViewCertificate() {
 
           .badge {
             width: 130px !important;
-            height: 110px !important;
+            height: 130px !important;
             flex-shrink: 0 !important;
             page-break-inside: avoid !important;
           }
