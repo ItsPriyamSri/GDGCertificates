@@ -210,27 +210,18 @@ function ViewCertificate() {
           overflow: hidden !important;
           background: url('/bg.png') !important;
           background-size: cover !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
         }
 
         .container {
-          width: 100% !important;
+          min-height: 100vh !important;
           height: auto !important;
-          max-height: 100vh !important;
-          min-height: 0 !important;
-          padding: 10px !important;
-          border: 20px solid #ffbd23ff !important;
-          
-          /* Single page enforcement */
+          padding: 15px !important;
           page-break-inside: avoid !important;
-          page-break-before: avoid !important;
-          page-break-after: avoid !important;
-          break-inside: avoid !important;
-          
+          border: 25px solid #ffbd23ff !important;
           display: flex !important;
           flex-direction: column !important;
-          /* Changed from space-between to prevent huge gaps */
-          justify-content: flex-start !important;
-          gap: 8px !important;
           overflow: hidden !important;
         }
 
@@ -243,7 +234,7 @@ function ViewCertificate() {
 
         .certificate {
           padding: 5px 20px !important;
-          margin-bottom: 5px !important;
+          margin-bottom: 0px !important;
         }
 
         .certificate > h1 {
@@ -258,12 +249,12 @@ function ViewCertificate() {
 
         .certificate > p {
           font-size: 13px !important;
-          margin: 5px 0 !important; 
+          margin: 3px 0 !important; 
           line-height: 1.3 !important;
         }
 
         .signatures {
-          margin: 5px 0 !important;
+          margin: 0 !important;
           padding: 0 20px !important;
         }
 
@@ -276,26 +267,46 @@ function ViewCertificate() {
         }
 
         .badges {
-          display: flex !important;
-          flex-wrap: wrap !important;
+          row-gap: 18px !important;
+          column-gap: 12px !important;
+          padding: 10px 15px !important;
           justify-content: center !important;
-          gap: 6px !important;
-          padding: 5px 10px !important;
-          width: 100% !important;
-          page-break-inside: avoid !important;
-          break-inside: avoid !important;
+          flex-wrap: wrap !important;
+          margin-top: 0px !important;
+          flex-grow: 1 !important;
+          align-content: space-evenly !important;
+          display: flex !important;
         }
 
         .badge {
-          /* 4 badges per row with equal width/height for circular shape */
-          width: calc(25% - 8px) !important;
-          height: 0 !important;
-          padding-bottom: calc(25% - 8px) !important; /* Square using padding trick */
+          width: 110px !important;
+          height: 110px !important;
           flex-shrink: 0 !important;
           page-break-inside: avoid !important;
-          break-inside: avoid !important;
           border-radius: 50% !important;
           position: relative !important;
+          overflow: hidden !important;
+          background: white !important;
+        }
+
+        .badge > .badge-bg {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          position: absolute !important;
+        }
+
+        .badge > .badge-img {
+          width: 90% !important;
+          max-height: 90% !important;
+          position: absolute !important;
+          top: 52% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          object-fit: contain !important;
         }
 
         .print-page {
