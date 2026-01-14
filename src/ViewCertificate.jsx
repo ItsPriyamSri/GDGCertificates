@@ -86,28 +86,28 @@ function ViewCertificate() {
           .logo-srmcem { height: 40px !important; }
 
           .certificate {
-            padding: 5px 20px !important;
-            margin-bottom: 5px !important;
+            padding: 10px 20px !important;
+            margin-bottom: 0 !important;
           }
 
           .certificate > h1 {
             font-size: 28px !important;
-            margin: 3px 0 !important;
+            margin: 8px 0 !important;
           }
 
           .certificate > h2 {
             font-size: 20px !important;
-            margin: 3px 0 !important;
+            margin: 5px 0 !important;
           }
 
           .certificate > p {
             font-size: 13px !important;
-            margin: 5px 0 !important; 
+            margin: 8px 0 3px 0 !important; 
             line-height: 1.3 !important;
           }
 
           .signatures {
-            margin: 5px 0 !important;
+            margin: 0 !important;
             padding: 0 20px !important;
           }
 
@@ -282,15 +282,13 @@ function ViewCertificate() {
         }
 
         .badge {
-          /* 4 badges per row with equal width/height for circular shape */
-          width: calc(25% - 8px) !important;
-          height: 0 !important;
-          padding-bottom: calc(25% - 8px) !important; /* Square using padding trick */
+          /* Fixed 55px circular badges - 4 per row */
+          width: 55px !important;
+          height: 55px !important;
           flex-shrink: 0 !important;
           page-break-inside: avoid !important;
           break-inside: avoid !important;
           border-radius: 50% !important;
-          position: relative !important;
         }
 
         .print-page {
