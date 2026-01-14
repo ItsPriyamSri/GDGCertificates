@@ -57,14 +57,39 @@ function Certificate() {
       });
 
       // Sort badges to put arcade badge first (it displays without frame)
-      const arcadeBadge = finalBadges.find(b =>
-        b.b_name.toLowerCase().includes('arcade') ||
-        b.img_url.toLowerCase().includes('arcade')
-      );
-      const otherBadges = finalBadges.filter(b => b !== arcadeBadge);
-      const sortedBadges = arcadeBadge ? [arcadeBadge, ...otherBadges] : finalBadges;
+      // Arcade level badges have names like "Level 3: Generative AI"
+      const isArcadeBadge = (badge) => {
+        const name = (badge.b_name || '').toLowerCase().trim();
+        const url = (badge.img_url || '').toLowerCase();
 
-      console.log('Arcade badge found:', arcadeBadge);
+        // Explicit checks for arcade/level badges
+        return (
+          name.includes('level 3') ||           // "Level 3: Generative AI"
+          name.includes('level 2') ||           // "Level 2: ..."
+          name.includes('level 1') ||           // "Level 1: ..."
+          name.startsWith('level') ||           // Any "Level X: ..." format
+          name.includes('arcade') ||            // Contains "arcade"
+          url.includes('arcade')                // URL contains "arcade"
+        );
+      };
+
+      const arcadeBadgeIndex = finalBadges.findIndex(isArcadeBadge);
+      let sortedBadges = finalBadges;
+
+      if (arcadeBadgeIndex !== -1) {
+        // Remove arcade badge from its current position and put it first
+        const arcadeBadge = finalBadges[arcadeBadgeIndex];
+        sortedBadges = [
+          arcadeBadge,
+          ...finalBadges.slice(0, arcadeBadgeIndex),
+          ...finalBadges.slice(arcadeBadgeIndex + 1)
+        ];
+        console.log('Arcade badge found at index:', arcadeBadgeIndex);
+        console.log('Arcade badge:', arcadeBadge);
+      } else {
+        console.log('No arcade badge found. Badge names:', finalBadges.map(b => b.b_name));
+      }
+
       console.log('Sorted badges:', sortedBadges);
 
       const name = data.split("<title>")[1].split("|")[0];
