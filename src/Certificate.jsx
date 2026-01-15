@@ -45,16 +45,80 @@ function Certificate() {
       const page = parser.parseFromString(data, "text/html");
       const badges = page.querySelectorAll(".profile-badge");
       const finalBadges = [];
+
+      // Cutoff date: November 1, 2025
+      const cutoffDate = new Date('2025-11-01');
+
+      // Helper function to parse earned date from badge text
+      const parseEarnedDate = (badge) => {
+        // Look for date in the badge text content
+        // Format is typically "Earned Nov 15, 2024 EST" or similar
+        const text = badge.textContent || badge.innerText || '';
+        const dateMatch = text.match(/Earned\s+(\w+\s+\d{1,2},?\s+\d{4})/i);
+
+        if (dateMatch) {
+          try {
+            const dateStr = dateMatch[1].replace(',', '');
+            const parsed = new Date(dateStr);
+            if (!isNaN(parsed.getTime())) {
+              return parsed;
+            }
+          } catch (e) {
+            console.log('Could not parse date:', dateMatch[1]);
+          }
+        }
+        return null;
+      };
+
+      // Helper to check if badge is the specific Level 3: Generative AI badge we want
+      const isGenAILevel3Badge = (badgeName) => {
+        const name = (badgeName || '').toLowerCase().trim();
+        return name.includes('level 3') && name.includes('generative ai');
+      };
+
+      // Helper to check if badge is an unwanted arcade badge (trivia, other levels, etc.)
+      const isUnwantedArcadeBadge = (badgeName) => {
+        const name = (badgeName || '').toLowerCase().trim();
+        // Exclude trivia badges, other arcade levels, etc. - but NOT Level 3: Generative AI
+        if (isGenAILevel3Badge(badgeName)) {
+          return false; // Keep this one
+        }
+        return (
+          name.includes('trivia') ||
+          name.includes('arcade') ||
+          (name.startsWith('level') && !name.includes('generative ai'))
+        );
+      };
+
       badges.forEach((badge) => {
+        const earnedDate = parseEarnedDate(badge);
+        const badgeName = badge.children[1]?.innerText || '';
+
+        // Only include badges earned before Nov 1, 2025 (or if date couldn't be parsed)
+        // If date parsing fails, we include the badge to be safe
+        if (earnedDate && earnedDate > cutoffDate) {
+          console.log('Filtering out badge earned after cutoff:', badgeName, earnedDate);
+          return; // Skip this badge
+        }
+
+        // Exclude unwanted arcade badges (trivia, other levels, etc.)
+        if (isUnwantedArcadeBadge(badgeName)) {
+          console.log('Filtering out unwanted arcade badge:', badgeName);
+          return; // Skip this badge
+        }
+
         const b = {
           link: badge.children[0].href,
           img_url: badge.children[0].children[0].src,
-          b_name: badge.children[1].innerText,
+          b_name: badgeName,
+          earned_date: earnedDate ? earnedDate.toISOString() : null,
         };
 
         finalBadges.push(b);
         console.log(b);
       });
+
+      console.log(`Found ${finalBadges.length} badges before Nov 1, 2025`);
 
       // Sort badges to put arcade badge first (it displays without frame)
       // Arcade level badges have names like "Level 3: Generative AI"
@@ -90,12 +154,14 @@ function Certificate() {
         console.log('No arcade badge found. Badge names:', finalBadges.map(b => b.b_name));
       }
 
-      console.log('Sorted badges:', sortedBadges);
+      // Limit to maximum 20 badges for the certificate
+      const limitedBadges = sortedBadges.slice(0, 20);
+      console.log(`Displaying ${limitedBadges.length} badges (max 20)`);
 
       const name = data.split("<title>")[1].split("|")[0];
       const obj = {
         name: name,
-        badges: sortedBadges,
+        badges: limitedBadges,
       };
       // console.log(obj);
 
